@@ -2,258 +2,348 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Bright Career Class</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Narayan Bhavan | Room Rent Manager</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
-body{margin:0;font-family:Arial;background:#f4f6f9}
+:root{
+--dark:#0f172a;
+--green:#22c55e;
+}
+
+body{
+margin:0;
+font-family:Segoe UI,Arial,sans-serif;
+background:#f1f5f9;
+}
+
 header{
-  background:#0b3c5d;
-  color:white;
-  padding:15px 25px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  position:relative;
-}
-header .logo-title{
-  display:flex;
-  align-items:center;
-}
-header img.logo{max-width:80px;margin-right:15px;}
-header h1{
-  font-size:28px;
-  margin:0;
-}
-header p.tagline{
-  font-size:16px;
-  margin:0;
-}
-.lang-btn{
-  background:#ffc107;
-  color:black;
-  padding:8px 12px;
-  border:none;
-  border-radius:5px;
-  cursor:pointer;
-  font-weight:bold;
-  font-size:16px;
+background:linear-gradient(90deg,#020617,#0f172a);
+color:#fff;
+padding:14px 18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-/* Navigation */
-nav{background:#1c6ea4;display:flex;justify-content:center;flex-wrap:wrap}
-nav a{color:white;padding:12px 18px;text-decoration:none;font-weight:bold;cursor:pointer;font-size:16px}
-nav a:hover{background:#144e75}
+/* Unique name branding */
+.brand{
+font-size:26px;
+font-weight:900;
+letter-spacing:4px;
+display:flex;
+align-items:center;
+gap:10px;
+font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.brand span{color:#fff;}
+.brand .mid{
+color:var(--green);
+font-size:30px;
+margin-top:-2px;
+}
 
-/* Sections */
-section{padding:30px;display:none}
-section.active{display:block}
-.card{background:white;padding:25px;border-radius:10px;box-shadow:0 3px 8px rgba(0,0,0,0.1);margin-bottom:25px}
-h2{color:#0b3c5d;margin-bottom:15px}
-button{padding:12px;border:none;border-radius:5px;cursor:pointer;background:#1c6ea4;color:white;font-size:16px}
-input,textarea{width:100%;padding:10px;margin:10px 0;font-size:16px}
-.hidden{display:none}
+.container{
+max-width:1100px;
+margin:auto;
+padding:16px;
+}
 
-/* 3-dot menu */
+.card{
+background:#fff;
+padding:16px;
+border-radius:14px;
+margin-bottom:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+input,select,button{
+width:100%;
+padding:11px;
+border-radius:9px;
+border:1px solid #cbd5e1;
+margin-top:8px;
+font-size:15px;
+}
+
+button{
+background:var(--dark);
+color:#fff;
+border:none;
+cursor:pointer;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:14px;
+}
+
+.room{
+border:1px solid #e5e7eb;
+padding:12px;
+border-radius:12px;
+background:#f8fafc;
+}
+
+.badge{
+padding:4px 12px;
+border-radius:20px;
+color:#fff;
+font-size:12px;
+}
+
+.pending{background:#f97316;}
+.complete{background:#22c55e;}
+
+.hide{display:none}
+
+/* Admin 3-dot menu */
+.menuBox{position:relative}
 .dots{
-  position:fixed;
-  right:25px;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:36px;
-  width:60px;
-  height:60px;
-  background:#1c6ea4;
-  color:white;
-  border-radius:50%;
-  text-align:center;
-  line-height:60px;
-  box-shadow:0 4px 8px rgba(0,0,0,0.2);
-  cursor:pointer;
-  z-index:1000;
-  transition:all 0.3s ease;
+font-size:24px;
+cursor:pointer;
+user-select:none;
+padding:6px 10px;
+border-radius:50%;
 }
-.dots:hover{background:#144e75;}
-.dot-menu{
-  position:fixed;
-  right:25px;
-  top:50%;
-  transform:translateY(-50%);
-  background:white;
-  border:1px solid #ccc;
-  padding:15px;
-  border-radius:10px;
-  display:none;
-  width:220px;
-  z-index:1000;
-}
-.dot-menu a{
-  display:block;
-  text-decoration:none;
-  color:black;
-  padding:8px;
-  font-weight:bold;
-  cursor:pointer;
-  font-size:16px;
-}
-.dot-menu a:hover{background:#f1f1f1;}
+.dots:hover{background:rgba(255,255,255,.08)}
 
-/* Home page big text */
-#home .card h2{font-size:36px;text-align:center}
-#home .card p{font-size:22px;text-align:center;margin-top:15px}
+.menu{
+position:absolute;
+right:0;
+top:36px;
+background:#fff;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+overflow:hidden;
+display:none;
+min-width:160px;
+z-index:10;
+}
+.menu button,
+.menu label{
+background:#fff;
+color:#111;
+border:none;
+width:100%;
+text-align:left;
+padding:11px 12px;
+cursor:pointer;
+display:block;
+font-size:14px;
+}
+.menu button:hover,
+.menu label:hover{background:#f1f5f9;}
+
+.whatsapp{
+position:fixed;
+right:18px;
+bottom:18px;
+width:58px;
+height:58px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+color:#fff;
+text-decoration:none;
+box-shadow:0 8px 18px rgba(0,0,0,.25);
+z-index:50;
+}
+
+footer{
+text-align:center;
+font-size:13px;
+color:#64748b;
+padding:12px;
+letter-spacing:1px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo-title">
-  <img src="50dd6486-b719-4c06-a57d-ef9ece18f0e4.png" alt="Bright Career Classes Logo" class="logo">
-  <div>
-    <h1>✨ Bright Career Class ✨</h1>
-    <p class="tagline">Learn Today, Lead Tomorrow</p>
-  </div>
+
+<div class="brand">
+<span>NARAYAN</span>
+<span class="mid">•</span>
+<span>BHAVAN</span>
 </div>
-<button class="lang-btn" onclick="toggleLang()">हिंदी / English</button>
+
+<div class="menuBox hide" id="adminMenu">
+<div class="dots" onclick="toggleMenu()">⋮</div>
+<div class="menu" id="menu">
+<button onclick="logout()">Logout</button>
+<button onclick="exportData()">Backup Data</button>
+<label>
+Restore Data
+<input type="file" hidden onchange="importData(event)">
+</label>
+</div>
+</div>
+
 </header>
 
-<nav>
-<a onclick="showSection('home')">Home</a>
-<a onclick="showSection('about')">About</a>
-<a onclick="showSection('subjects')">Subjects</a>
-<a onclick="showSection('fees')">Fees</a>
-<a onclick="showSection('admission')">Admission</a>
-<a onclick="showSection('contact')">Contact</a>
-</nav>
+<div class="container">
 
-<!-- HOME -->
-<section id="home" class="active">
-<div class="card">
-<h2 id="welcome">Welcome to Bright Career Class</h2>
-<p id="homeText">“Dream big. Work hard. Achieve excellence.”</p>
-<p>“Knowledge is the key to success — start your journey with us!”</p>
-<p>📺 <a href="https://youtube.com/@brightcareerclasses-1?si=QNgL_2sOHDz6l-Vy" target="_blank" style="font-size:20px;">YouTube Classes</a><br>
-📸 Instagram: brightcareerclasses0701</p>
-</div>
-
-<!-- 3 DOT -->
-<div class="dots" onclick="toggleDots()">⋮</div>
-<div class="dot-menu" id="dotMenu">
-<a onclick="showSection('admin')">🔐 Admin Login</a>
-</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-<div class="card">
-<h2>About Bright Career Class</h2>
-<p>Bright Career Class is dedicated to nurturing young minds from Class 1 to 8.  
-Our mission is to provide strong foundational knowledge in Mathematics, English, Hindi, Science, and Social Science.  
-We focus on clarity of concepts, regular practice, and motivating students to achieve their best in all boards — CBSE, ICSE, and UP Board.</p>
-<p>We believe every student has the potential to excel, and we guide them step by step to reach academic excellence.</p>
-</div>
-</section>
-
-<!-- SUBJECTS -->
-<section id="subjects">
-<div class="card">
-<h2>Subjects (Class 1–8)</h2>
-<ul>
-<li>Mathematics</li>
-<li>English</li>
-<li>Hindi</li>
-<li>Science</li>
-<li>Social Science</li>
-</ul>
-</div>
-</section>
-
-<!-- FEES -->
-<section id="fees">
-<div class="card">
-<h2>Fees Structure</h2>
-<p>
-Class 1–5 : ₹500 / month<br>
-Class 6–8 : ₹800 / month
-</p>
-</div>
-</section>
-
-<!-- ADMISSION -->
-<section id="admission">
-<div class="card">
-<h2>Admission Form</h2>
-<input id="sname" placeholder="Student Name">
-<input id="sclass" placeholder="Class">
-<input id="sphone" placeholder="Phone Number">
-<textarea id="saddress" placeholder="Address"></textarea>
-<button onclick="saveAdmission()">Submit</button>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-<div class="card">
-<h2>Contact</h2>
-<p>📞 9140466780</p>
-<p>📍 Shahganj, Jaunpur</p>
-</div>
-</section>
-
-<!-- ADMIN -->
-<section id="admin">
+<!-- Login -->
 <div class="card" id="loginBox">
-<h2>Admin Login</h2>
-<input id="adminUser" placeholder="Username">
-<input id="adminPass" type="password" placeholder="Password">
+<h3>Owner Login</h3>
+<input type="password" id="password" placeholder="Enter owner password">
 <button onclick="login()">Login</button>
 </div>
 
-<div class="card hidden" id="dashboard">
-<h2>Admin Dashboard</h2>
-<img src="50dd6486-b719-4c06-a57d-ef9ece18f0e4.png" alt="Dashboard Logo" style="max-width:150px; display:block; margin:auto 0 20px 0;">
-<button onclick="logout()">Logout</button>
+<!-- Admin panel -->
+<div class="card hide" id="adminBox">
+
+<h3>Admin Control Panel</h3>
+
+<select id="roomIndex">
+<option value="0">Room 1</option>
+<option value="1">Room 2</option>
+<option value="2">Room 3</option>
+<option value="3">Room 4</option>
+</select>
+
+<input type="text" id="renter" placeholder="Renter Name">
+<input type="number" id="rent" placeholder="Monthly Rent (₹)">
+<input type="number" id="deposit" placeholder="Deposit Amount (₹)">
+<input type="number" id="dues" placeholder="Dues / Pending Amount (₹)">
+
+<select id="status">
+<option value="Pending">Pending</option>
+<option value="Complete">Complete</option>
+</select>
+
+<button onclick="saveRoom()">Save Room Details</button>
+
 </div>
-</section>
+
+<!-- Public room section -->
+<div class="card">
+<h3>Room Details</h3>
+<div class="grid" id="roomList"></div>
+</div>
+
+<!-- Address & map -->
+<div class="card">
+<h3>Property Address</h3>
+Jasidih, Ghagada, Basavadih<br>
+Near ITI College<br>
+FJXW+85Q, Gajrajpur, Jharkhand – 814142
+
+<br><br>
+
+<div style="border-radius:12px;overflow:hidden;border:1px solid #e5e7eb">
+<iframe
+src="https://www.google.com/maps?q=FJXW+85Q,+Gajrajpur,+Jharkhand+814142&output=embed"
+width="100%"
+height="230"
+style="border:0"
+loading="lazy"></iframe>
+</div>
+</div>
+
+</div>
+
+<footer>
+MADE BY DEV RAJ
+</footer>
+
+<a class="whatsapp" href="https://wa.me/919709074230" target="_blank">🟢</a>
 
 <script>
-let adminPassword="amit6204";
-let lang="en";
-
-function toggleLang(){
-lang=lang==="en"?"hi":"en";
-document.getElementById("welcome").innerText=
-lang==="en"?"Welcome to Bright Career Class":"ब्राइट करियर क्लास में आपका स्वागत है";
-document.getElementById("homeText").innerText=
-lang==="en"?"“Dream big. Work hard. Achieve excellence.”":"“बड़े सपने देखें। मेहनत करें। उत्कृष्टता प्राप्त करें।”";
-}
-
-function showSection(id){
-document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-document.querySelector(".dots").style.display=(id==="home")?"block":"none";
-dotMenu.style.display="none";
-}
-
-function toggleDots(){
-dotMenu.style.display=dotMenu.style.display==="block"?"none":"block";
-}
-
-function saveAdmission(){
-alert("Admission Submitted Successfully");
-}
+let rooms = JSON.parse(localStorage.getItem("narayanRooms")) || [
+{renter:"",rent:"",deposit:"",dues:"",status:""},
+{renter:"",rent:"",deposit:"",dues:"",status:""},
+{renter:"",rent:"",deposit:"",dues:"",status:""},
+{renter:"",rent:"",deposit:"",dues:"",status:""}
+];
 
 function login(){
-if(adminUser.value==="admin"&&adminPass.value===adminPassword){
-loginBox.classList.add("hidden");
-dashboard.classList.remove("hidden");
-}else alert("Wrong Login");
+if(password.value === "152325"){
+loginBox.classList.add("hide");
+adminBox.classList.remove("hide");
+adminMenu.classList.remove("hide");
+}else{
+alert("Wrong password");
+}
 }
 
 function logout(){
-dashboard.classList.add("hidden");
-loginBox.classList.remove("hidden");
-showSection("home");
+adminBox.classList.add("hide");
+loginBox.classList.remove("hide");
+adminMenu.classList.add("hide");
+menu.style.display="none";
+}
+
+function toggleMenu(){
+menu.style.display = (menu.style.display==="block")?"none":"block";
+}
+
+function saveRoom(){
+let i = roomIndex.value;
+
+rooms[i].renter  = renter.value;
+rooms[i].rent    = rent.value;
+rooms[i].deposit = deposit.value;
+rooms[i].dues    = dues.value;
+rooms[i].status  = status.value;
+
+localStorage.setItem("narayanRooms",JSON.stringify(rooms));
+showRooms();
+alert("Room updated");
+}
+
+function showRooms(){
+let html="";
+rooms.forEach((r,i)=>{
+let cls = (r.status==="Complete")?"complete":"pending";
+
+html += `
+<div class="room">
+<b>Room ${i+1}</b><br>
+<b>Renter Name:</b> ${r.renter || "-"}<br>
+<b>Rent:</b> ₹ ${r.rent || 0}<br>
+<b>Deposit:</b> ₹ ${r.deposit || 0}<br>
+<b>Dues:</b> ₹ ${r.dues || 0}<br>
+<b>Status:</b>
+<span class="badge ${cls}">
+${r.status || "-"}
+</span>
+</div>`;
+});
+roomList.innerHTML = html;
+}
+
+showRooms();
+
+/* Backup / restore */
+function exportData(){
+let data = JSON.stringify(rooms);
+let blob = new Blob([data],{type:"application/json"});
+let a = document.createElement("a");
+a.href = URL.createObjectURL(blob);
+a.download = "narayan_bhavan_backup.json";
+a.click();
+}
+
+function importData(e){
+let file = e.target.files[0];
+if(!file) return;
+
+let reader = new FileReader();
+reader.onload=function(){
+rooms = JSON.parse(reader.result);
+localStorage.setItem("narayanRooms",JSON.stringify(rooms));
+showRooms();
+alert("Data restored successfully");
+};
+reader.readAsText(file);
 }
 </script>
 
