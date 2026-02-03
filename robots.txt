@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dev820807gamilcom-boop.github.io/NARAYAN-BHAVAN--Deoghar/sitemap.xml
+
